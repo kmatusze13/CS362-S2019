@@ -598,8 +598,6 @@ int getCost(int cardNumber)
       return 3;
     case gold:
       return 6;
-    case adventurer:
-      return 6;
     case council_room:
       return 5;
     case feast:
@@ -610,18 +608,10 @@ int getCost(int cardNumber)
       return 5;
     case remodel:
       return 4;
-    case smithy:
-      return 4;
-    case village:
-      return 3;
     case baron:
       return 4;
-    case great_hall:
-      return 3;
     case minion:
       return 5;
-    case steward:
-      return 3;
     case tribute:
       return 5;
     case ambassador:
