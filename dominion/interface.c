@@ -29,8 +29,6 @@ void cardNumToName(int card, char *name){
     break;
   case gold: strcpy(name,"Gold");
     break;
-  case adventurer: strcpy(name,"Adventurer");
-    break;
   case council_room: strcpy(name,"Council Room");
     break;
   case feast: strcpy(name,"Feast");
@@ -41,17 +39,9 @@ void cardNumToName(int card, char *name){
     break;
   case remodel: strcpy(name,"Remodel");
     break;
-  case smithy: strcpy(name,"Smithy");
-    break;
-  case village: strcpy(name,"Village");
-    break;
   case baron: strcpy(name,"Baron");
     break;
-  case great_hall: strcpy(name,"Great Hall");
-    break;
   case minion: strcpy(name,"Minion");
-    break;
-  case steward: strcpy(name,"Steward");
     break;
   case tribute: strcpy(name,"Tribute");
     break;
@@ -75,8 +65,6 @@ void cardNumToName(int card, char *name){
 
 }
 
-
-
 int getCardCost(int card) {
   int cost;
   switch(card) {
@@ -94,8 +82,6 @@ int getCardCost(int card) {
     break;
   case gold: cost = GOLD_COST;
     break;
-  case adventurer: cost = ADVENTURER_COST;
-    break;
   case council_room: cost = COUNCIL_ROOM_COST;
     break;
   case feast: cost = FEAST_COST;
@@ -106,17 +92,9 @@ int getCardCost(int card) {
     break;
   case remodel: cost = REMODEL_COST;
     break;
-  case smithy: cost = SMITHY_COST;
-    break;
-  case village: cost = VILLAGE_COST;
-    break;
   case baron: cost = BARON_COST;
     break;
-  case great_hall: cost = GREAT_HALL_COST;
-    break;
   case minion: cost = MINION_COST;
-    break;
-  case steward: cost = STEWARD_COST;
     break;
   case tribute: cost = TRIBUTE_COST;
     break;
@@ -139,11 +117,6 @@ int getCardCost(int card) {
   return cost;
 }
 
-
-
-
-
-
 void printHand(int player, struct gameState *game) {
   int handCount = game->handCount[player];
   int handIndex;
@@ -157,8 +130,6 @@ void printHand(int player, struct gameState *game) {
   }
   printf("\n");
 }
-
-
 
 void printDeck(int player, struct gameState *game) {
   int deckCount = game->deckCount[player];
@@ -188,8 +159,6 @@ void printPlayed(int player, struct gameState *game) {
   printf("\n");
 }
 
-
-
 void printDiscard(int player, struct gameState *game) {
   int discardCount = game->discardCount[player];
   int discardIndex;
@@ -203,9 +172,6 @@ void printDiscard(int player, struct gameState *game) {
   }
   printf("\n");
 }
-
-
-
 
 void printSupply(struct gameState *game) {
   int cardNum, cardCost, cardCount;
@@ -243,7 +209,6 @@ void printScores(struct gameState *game) {
   }
 }
 
-
 void printHelp(void) {
   printf("Commands are: \n\
   add [Supply Card Number] 			- add any card to your hand (teh hacks)\n\
@@ -262,7 +227,6 @@ void printHelp(void) {
 
 }
 
-
 void phaseNumToName(int phase, char *name) {
   switch(phase){
   case ACTION_PHASE: strcpy(name,"Action");
@@ -274,9 +238,8 @@ void phaseNumToName(int phase, char *name) {
   }
 }
 
-
 int addCardToHand(int player, int card, struct gameState *game) {
-  if(card >= adventurer && card < NUM_TOTAL_K_CARDS){
+  if(card >= 6 && card < NUM_TOTAL_K_CARDS){
     int handTop = game->handCount[player];
     game->hand[player][handTop] = card;
     game->handCount[player]++;
@@ -296,7 +259,7 @@ void selectKingdomCards(int randomSeed, int kingCards[NUM_K_CARDS]) {
   while(numSelected < NUM_K_CARDS) {
     used = FALSE;
     card = floor(Random() * NUM_TOTAL_K_CARDS);
-    if(card < adventurer) continue;
+    if(card < 6) continue;
     for(i = 0; i < numSelected; i++) {
       if(kingCards[i] == card) {
 	used = TRUE;
@@ -308,7 +271,6 @@ void selectKingdomCards(int randomSeed, int kingCards[NUM_K_CARDS]) {
     numSelected++;
   }
 }
-
 
 int countHandCoins(int player, struct gameState *game) {
   int card, index, coinage = 0;
