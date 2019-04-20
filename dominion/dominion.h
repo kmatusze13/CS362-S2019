@@ -25,7 +25,6 @@ enum CARD
    silver,
    gold,
 
-   adventurer,
    /* If no/only 1 treasure found, stop when full deck seen */
    council_room,
    feast, /* choice1 is supply # of card gained) */
@@ -33,14 +32,11 @@ enum CARD
    mine, /* choice1 is hand# of money to trash, choice2 is supply# of
 	    money to put in hand */
    remodel, /* choice1 is hand# of card to remodel, choice2 is supply# */
-   smithy,
-   village,
 
    baron, /* choice1: boolean for discard of estate */
    /* Discard is always of first (lowest index) estate */
-   great_hall,
    minion, /* choice1:  1 = +2 coin, 2 = redraw */
-   steward, /* choice1: 1 = +2 card, 2 = +2 coin, 3 = trash 2 (choice2,3) */
+  /* choice1: 1 = +2 card, 2 = +2 coin, 3 = trash 2 (choice2,3) */
    tribute,
 
    ambassador, /* choice1 = hand#, choice2 = number to return to supply */
@@ -127,5 +123,11 @@ int scoreFor(int player, struct gameState *state);
 int getWinners(int players[MAX_PLAYERS], struct gameState *state);
 /* Set array position of each player who won (remember ties!) to
    1, others to 0 */
+
+int smithy(int handPos, struct gameState *state);
+int village(int handPos, struct gameState *state);
+void steward(int choice1, int choice2, int choice3, struct gameState *state);
+int great_hall(int handPos, struct gameState *state);
+int adventurer(struct gameState *state);
 
 #endif
