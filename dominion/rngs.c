@@ -114,7 +114,8 @@ static int  initialized   = 0;          /* test for stream initialization */
     x = x % MODULUS;                       /* correct if x is too large  */
   if (x < 0)                                 
     x = ((unsigned long) time((time_t *) NULL)) % MODULUS;              
-  if (x == 0)                                
+  if (x == 0) 
+  {
     while (!ok) {
       printf("\nEnter a positive integer seed (9 digits or less) >> ");
       scanf("%ld", &x);
@@ -122,6 +123,7 @@ static int  initialized   = 0;          /* test for stream initialization */
       if (!ok)
         printf("\nInput out of range ... try again\n");
     }
+  }
   seed[stream] = x;
 }
 
@@ -145,8 +147,10 @@ static int  initialized   = 0;          /* test for stream initialization */
  */
 {
   stream = ((unsigned int) index) % STREAMS;
-  if ((initialized == 0) && (stream != 0))   /* protect against        */
-    PlantSeeds(DEFAULT);                     /* un-initialized streams */
+  if ((initialized == 0) && (stream != 0)) 
+  {
+    PlantSeeds(DEFAULT);
+  }
 }
 
 
