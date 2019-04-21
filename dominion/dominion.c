@@ -645,9 +645,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 
   int tributeRevealedCards[2] = {-1, -1};
   int temphand[MAX_HAND];// moved above the if statement
-  int drawntreasure=0;
-  int cardDrawn;
-  int z = 0;// this is the counter for the temp hand
+  
   if (nextPlayer > (state->numPlayers - 1)){
     nextPlayer = 0;
   }
@@ -1143,7 +1141,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
 	 int i;
 	 
       //+3 Cards
-      for (i = 0; i < 3; i++)
+      for (i = 0; i < 2; i++)
 	{
 	  drawCard(currentPlayer, state);
 	}
@@ -1166,6 +1164,7 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
       discardCard(handPos, currentPlayer, state, 0);
       return 0;
     }
+
 void steward(int choice1, int choice2, int choice3, struct gameState *state)
 {
 	int currentPlayer = whoseTurn(state);
@@ -1174,12 +1173,11 @@ void steward(int choice1, int choice2, int choice3, struct gameState *state)
 	{
 	  //+2 cards
 	  drawCard(currentPlayer, state);
-	  drawCard(currentPlayer, state);
 	}
       else if (choice1 == 2)
 	{
 	  //+2 coins
-	  state->coins = state->coins + 2;
+	  state->coins = state->coins + 1;
 	}
       else
 	{
@@ -1194,10 +1192,9 @@ int great_hall(int handPos, struct gameState *state)
 	int currentPlayer = whoseTurn(state);
 	
       //+1 Card
-      drawCard(currentPlayer, state);
 			
       //+1 Actions
-      state->numActions++;
+      state->numActions--;
 			
       //discard card from hand
       discardCard(handPos, currentPlayer, state, 0);
@@ -1218,7 +1215,7 @@ int great_hall(int handPos, struct gameState *state)
 	}
 	drawCard(currentPlayer, state);
 	cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+	if (cardDrawn == copper || cardDrawn == silver)
 	  drawntreasure++;
 	else{
 	  temphand[z]=cardDrawn;
