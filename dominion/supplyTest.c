@@ -12,8 +12,8 @@ int main () {
 
   int r;
 
-  int k[10] = {adventurer, council_room, feast, gardens, mine,
-	       remodel, smithy, village, baron, great_hall};
+  int k[10] = {6, council_room, feast, gardens, mine,
+	       remodel, 4, village, baron, 3};
 
   struct gameState G;
   
