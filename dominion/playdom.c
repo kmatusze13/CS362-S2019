@@ -5,8 +5,8 @@
 
 int main (int argc, char** argv) {
   struct gameState G;
-  int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
-           sea_hag, tribute, smithy};
+  int k[10] = {6, gardens, embargo, 3, minion, mine, cutpurse,
+           sea_hag, tribute, 4};
 
   printf ("Starting game.\n");
 
@@ -31,9 +31,9 @@ int main (int argc, char** argv) {
     money += 2;
       else if (handCard(i, &G) == gold)
     money += 3;
-      else if (handCard(i, &G) == smithy)
+      else if (handCard(i, &G) == 4)
     smithyPos = i;
-      else if (handCard(i, &G) == adventurer)
+      else if (handCard(i, &G) == 6)
     adventurerPos = i;
     }
 
@@ -111,7 +111,7 @@ int main (int argc, char** argv) {
       }
       else if ((money >= 6) && (numAdventurers < 2)) {
         printf("1: bought adventurer\n");
-        buyCard(adventurer, &G);
+        buyCard(6, &G);
         numAdventurers++;
       }else if (money >= 6){
         printf("1: bought gold\n");
