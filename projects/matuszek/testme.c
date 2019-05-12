@@ -1,30 +1,31 @@
-#include<stdio.h>
+include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
 #include<time.h>
 
-// Source for char input random value: https://ideone.com/L1Tlxa
+// Source for char input random value: https://stackoverflow.com/questions/44222866/is-there-anyway-to-generate-character-space32-to-126-using-sodium-h-or-ot
 char inputChar()
 {
-    char random = (rand() % 94) + 32;
+    char random = (rand() % 95) + 32;
 return random;
 }
 
-// Source: https://stackoverflow.com/questions/15767691/whats-the-c-library-function-to-generate-random-string
+// Source: https://www.codeproject.com/Questions/640193/Random-string-in-language-C
 
 char *inputString()
 {
-    static char s[6];           //Array that will be returned
-        int i = 0;
 
-        //0 to 15.  Adding 101 would bring it to 101(e) and 116(t)
-        while (i < 5)
-        {
-                s[i] = (rand() % 16) + 101;
-                i++;
-        }
+char *s
+const int len
 
-    return s;
+static const char alphanum[] =     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+
+    for (int i = 0; i < len; ++i) {
+        s[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
+    }
+
+    s[len] = 0;
+
 }
 
 void testme()
@@ -34,8 +35,8 @@ void testme()
   char c;
   int state = 0;
   while (1)
-{
-    tcCount++;
+  {
+tcCount++;
     c = inputChar();
     s = inputString();
     printf("Iteration %d: c = %c, s = %s, state = %d\n", tcCount, c, s, state);
