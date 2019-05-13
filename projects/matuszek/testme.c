@@ -18,8 +18,10 @@ char *inputString()
 char *s
 const int len
 
+// array of alphabetic characters to put in
 static const char alphanum[] =     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
+    // loop that fills the array of random characters
     for (int i = 0; i < len; ++i) {
         s[i] = alphanum[rand() % (sizeof(alphanum) - 1)];
     }
