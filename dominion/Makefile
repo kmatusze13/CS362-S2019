@@ -16,8 +16,8 @@ randomtests.out: randomtestcard1.c	randomtestcard2.c	randomtestadventurer.c
         gcov bst.c >> tests.out
 
         echo "randomtestadventurer.c:" >> tests.out
-        gcc -o unittest3  unittest3.c $(CFLAGS)
-        ./unittest3 >> tests.out
+        gcc -o randomtestadventurer  randomtestadventurer.c $(CFLAGS)
+        ./randomtestadventurer >> tests.out
         gcov bst.c >> tests.out
 
 rngs.o: rngs.h rngs.c
