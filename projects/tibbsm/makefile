@@ -2,16 +2,16 @@ FLAGS= -Wall -fpic -coverage -lm -std=c99
 
 default: tests.out
 
-tests.out: unittest1.c unittest2.c unittest3.c unittest4.c
+tests.out: cardtest1.c cardtest2.c cardtest3.c cardtest4.c
         
         echo "Result for running BST tests:" > tests.out
-        echo "cardtest11.c:" >> tests.out
+        echo "cardtest1.c:" >> tests.out
         gcc -o cardtest1  cardtest1.c $(CFLAGS)
         ./cardtest1 >> tests.out
         gcov bst.c >> tests.out
         
         echo "cardtest2.c:" >> tests.out
-        gcc -o cardtest2  cardtest22.c $(CFLAGS)
+        gcc -o cardtest2  cardtest2.c $(CFLAGS)
         ./cardtest2 >> tests.out
         gcov bst.c >> tests.out
         
